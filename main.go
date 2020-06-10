@@ -20,8 +20,10 @@ func main(){
 	for _, strnum := range args {
 		num, err := strconv.Atoi(strnum)
 		if nil == err {
-			fmt.Println(num)
-			mybytes = append(mybytes, uint8(num))
+			if (num <= 255) && (num >= 0) {
+				fmt.Println(num)
+				mybytes = append(mybytes, uint8(num))
+			}
 		}
 	}
 }
