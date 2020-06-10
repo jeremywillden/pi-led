@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	pin        = 18
+	pin        = 18 // See hardware description
 	count      = 4
 	brightness = 255
 )
@@ -45,3 +45,23 @@ func SetLeds(colors []uint32) {
 		}
 	}
 }
+
+/*
+HARDWARE NOTES:
+This was tested with a Raspberry Pi 3, Model B+, and also on a Raspberry Pi 4
+The LED string (only a few LEDs, to avoid overloading the available power supply current)
+is connected to 3 of the GPIO pins.  The GPIO only drive 3.3V logic, and the LEDs are
+typically powered by 5.0V, making the 3.3V drive pin "on the edge" and not quite
+high enough to drive the LED reliably.  To overcome this issue most easily, run the LED
+string from a slightly reduced supply voltage.  The easiest way is to use a basic silicon
+diode (forward voltage drop is in the range of 0.6 to 0.7 V) between the 5V power of
+the Pi and the 5V input of the LED string.  Anode of the diode connects to 5V power
+on the Pi, and the cathode (the direction the arrow points, and the end of the diode
+with the polarity marking) is connected to the 5V input of the LED strip.
+LED strip 5V power (through the diode) connects to pin 2 or 4 (+5V) of the Pi
+LED strip ground connects to pin 6 (or any of the other ground pins)
+LED strip control line connects to pin 12 of the Pi (GPIO18, PCM_CLK)
+This is why the "pin" constant above is 18 (= GPIO18)
+The ws2811 library only supports certain GPIO pins for best performance, see
+documentation for that library for details.
+*/
