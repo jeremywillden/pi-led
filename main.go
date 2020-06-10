@@ -27,14 +27,20 @@ func main(){
 			}
 		}
 	}
-	numcolorwords := int(math.Ceil(float64(len(mybytes)) / 3))
-	fmt.Print("LEDs:", numcolorwords)
-	mywords := make([]uint32, numcolorwords)
-	for i, onenum := range mybytes {
-		mywords[i/3] = mywords[i/3] + (uint32(onenum) << (8*(i%3)))
-	}
-	fmt.Println("   ", mywords)
-	SetLeds(mywords)
+	if len(args) < 1 {
+		fmt.Println("Add numeric arguments to drive LEDs to specific colors")
+		fmt.Println("The default strip uses Blue-Red-Green ordering, YMMV")
+		fmt.Println("Must be run as root/sudo to access the hardware")
+	} else {
+		numcolorwords := int(math.Ceil(float64(len(mybytes)) / 3))
+		fmt.Print("LEDs:", numcolorwords)
+		mywords := make([]uint32, numcolorwords)
+		for i, onenum := range mybytes {
+			mywords[i/3] = mywords[i/3] + (uint32(onenum) << (8*(i%3)))
+		}
+		fmt.Println("   ", mywords)
+		SetLeds(mywords)
+		}
 }
 
 // SetLeds sets a string of RGB LEDs to an array of colors in u32 format
@@ -56,8 +62,9 @@ func SetLeds(colors []uint32) {
 }
 
 /*
+Must run with sudo (root privileges) to get access to the low-level hardware to drive the LED strip
 HARDWARE NOTES:
-This was tested with a Raspberry Pi 3, Model B+, and also on a Raspberry Pi 4
+This was tested with a Raspberry Pi 4, but wasn't working on a Pi 3 model B+ yet
 The LED string (only a few LEDs, to avoid overloading the available power supply current)
 is connected to 3 of the GPIO pins.  The GPIO only drive 3.3V logic, and the LEDs are
 typically powered by 5.0V, making the 3.3V drive pin "on the edge" and not quite
