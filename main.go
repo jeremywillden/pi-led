@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"math"
 
 	"github.com/jgarff/rpi_ws281x/golang/ws2811"
 )
 
 const (
 	pin        = 18 // See hardware description
-	count      = 4
-	brightness = 255
+	count      = 4 // number of LEDs on the strip
+	brightness = 255 // decrease this to run the LEDs at reduced brightness
 )
 
 func main(){
@@ -21,11 +22,19 @@ func main(){
 		num, err := strconv.Atoi(strnum)
 		if nil == err {
 			if (num <= 255) && (num >= 0) {
-				fmt.Println(num)
+				//fmt.Println(num)
 				mybytes = append(mybytes, uint8(num))
 			}
 		}
 	}
+	numcolorwords := int(math.Ceil(float64(len(mybytes)) / 3))
+	fmt.Print("LEDs:", numcolorwords)
+	mywords := make([]uint32, numcolorwords)
+	for i, onenum := range mybytes {
+		mywords[i/3] = mywords[i/3] + (uint32(onenum) << (8*(i%3)))
+	}
+	fmt.Println("   ", mywords)
+	SetLeds(mywords)
 }
 
 // SetLeds sets a string of RGB LEDs to an array of colors in u32 format
