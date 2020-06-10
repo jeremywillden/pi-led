@@ -16,10 +16,12 @@ const (
 
 func main(){
 	args := os.Args[1:] // Ignore the name of the program, Args[0]
+	var mybytes []uint8
 	for _, strnum := range args {
 		num, err := strconv.Atoi(strnum)
 		if nil == err {
 			fmt.Println(num)
+			mybytes = append(mybytes, uint8(num))
 		}
 	}
 }
