@@ -82,8 +82,15 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 def returner(ret):
     """
-    Run an LED color pattern without parsing any returned value for now
+    Run an LED color pattern without parsing any returned value for now and write the ret dict to a file
     """
+    try:
+        f = open("/root/led-display-output.txt", "w+") # use "a+" to append instead of re-writing
+#        f.write( json.dumps(ret) )
+        f.write( str(ret) )
+        f.close
+    except:
+        pass
     # Create NeoPixel object with appropriate configuration.
     strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     # Intialize the library (must be called once before other functions).
