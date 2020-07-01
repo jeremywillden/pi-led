@@ -12,6 +12,12 @@ removeall:
       - ngrep
       - nmap
       - tcpdump
+      - openvpn
+      - screen
+      - tmux
+      - p7zip
+      - wavemon
+      - ser2net
 
 turnAllLedsOffHere:
   cmd.run:

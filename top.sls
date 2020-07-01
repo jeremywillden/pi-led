@@ -7,8 +7,10 @@
 #  production-db:
 
 base:
-#  '*':
-#    - our-base-packages
+  '*':
+    - colors.allpurple
+    - our-base-packages
+    - colors.alloff
   'dev':
     - match: nodegroup
     - colors.oneyellow
@@ -16,7 +18,9 @@ base:
     - dev.debug
 #  'N@staging or N@production'
 #    - match: compound
+#    - colors.twopurple
 #    - productionlogging
+#    - colors.alloff
   'web':
     - match: nodegroup
     - colors.twoyellow
