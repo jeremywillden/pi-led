@@ -7,17 +7,17 @@
 #  production-db:
 
 base:
-  '*':
-    - our-base-packages
-  '*-web':
+#  '*':
+#    - our-base-packages
+  'web':
     - match: nodegroup
     - webserver
-  '*-db':
+  'db':
     - match: nodegroup
     - databaseserver
-  'dev-*':
-    - match: nodegroup
-    - devtools
-  'N@staging-* or N@production-*'
-    - match: compound
-    - productionlogging
+#  'dev':
+#    - match: nodegroup
+#    - devtools
+#  'N@staging or N@production'
+#    - match: compound
+#    - productionlogging
