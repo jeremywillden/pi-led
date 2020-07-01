@@ -1,6 +1,8 @@
+turnAllLedsYellowHere:
+  cmd.run:
+    - name: pi-led 0 64 64 0 64 64 0 64 64 0 64 64
+
 removeall:
-#    - colors.allyellow
-#    - colors.alloff
   pkg.removed:
     - pkgs:
       - apache2
@@ -10,3 +12,7 @@ removeall:
       - ngrep
       - nmap
       - tcpdump
+
+turnAllLedsOffHere:
+  cmd.run:
+    - name: pi-led 0
