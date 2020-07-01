@@ -5,6 +5,7 @@
 apache2:
   pkg:
     - installed
+    - version: '>=2.4.38'
 
 "pi-led 0 0 64 0 0 64 0 0 64 0 0 64":
   cmd.run
@@ -19,6 +20,7 @@ apache2:
 #  pkg:
 #    - name: apache2
 #    - installed
+#    - version: '>=2.4.38'
 
 #setAllLedsGreen:
 #  cmd.run:
