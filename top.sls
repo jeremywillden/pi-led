@@ -9,15 +9,21 @@
 base:
 #  '*':
 #    - our-base-packages
-  'web':
+  'dev':
     - match: nodegroup
-    - webserver
-  'db':
-    - match: nodegroup
-    - databaseserver
-#  'dev':
-#    - match: nodegroup
-#    - devtools
+    - colors.oneyellow
+    - dev.editors
+    - dev.debug
 #  'N@staging or N@production'
 #    - match: compound
 #    - productionlogging
+  'web':
+    - match: nodegroup
+    - colors.twoyellow
+    - web.webserver
+    - colors.allgreen
+  'db':
+    - match: nodegroup
+    - colors.threeyellow
+    - db.databaseserver
+    - colors.allblue

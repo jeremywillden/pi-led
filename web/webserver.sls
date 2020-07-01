@@ -1,5 +1,5 @@
 # The shorthand (but less manageable) way:
-"pi-led 0 64 64 0 64 64 0 64 64 0 64 64":
+"pi-led 0 0 0 0 64 64":
   cmd.run
 
 apache2:
@@ -7,14 +7,14 @@ apache2:
     - installed
     - version: '>=2.4.38'
 
-"pi-led 0 0 64 0 0 64 0 0 64 0 0 64":
+"pi-led 0 0 0 0 0 64":
   cmd.run
 
 
 # The better way:
-#setAllLedsYellow:
+#setSingleLedYellow:
 #  cmd.run:
-#    - name: pi-led 0 64 64 0 64 64 0 64 64 0 64 64
+#    - name: pi-led 0 0 0 0 64 64
 
 #myapache2:
 #  pkg:
@@ -22,8 +22,8 @@ apache2:
 #    - installed
 #    - version: '>=2.4.38'
 
-#setAllLedsGreen:
+#setSingleLedGreen:
 #  cmd.run:
-#    - name: pi-led 0 0 64 0 0 64 0 0 64 0 0 64
+#    - name: pi-led 0 0 0 0 0 64
 
 
