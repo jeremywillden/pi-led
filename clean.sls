@@ -18,6 +18,7 @@ removeall:
       - p7zip
       - wavemon
       - ser2net
+      - ufw
   file.absent:
     - name: /var/www
 

@@ -1,4 +1,9 @@
 # using nodegroups for easy targeting:
+#  dev:
+#  staging:
+#  production:
+#  web:
+#  db:
 #  dev-web:      
 #  dev-db:
 #  staging-web:
@@ -16,11 +21,18 @@ base:
     - colors.oneyellow
     - dev.editors
     - dev.debug
-#  'N@staging or N@production'
-#    - match: compound
-#    - colors.twopurple
-#    - productionlogging
-#    - colors.alloff
+  'staging':
+    - match: nodegroup
+    - colors.twopurple
+    - production.firewall
+    - production.logging
+    - colors.alloff
+  'production':
+    - match: nodegroup
+    - colors.twopurple
+    - production.firewall
+    - production.logging
+    - colors.alloff
   'web':
     - match: nodegroup
     - colors.twoyellow
