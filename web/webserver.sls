@@ -7,6 +7,24 @@ apache2:
     - installed
     - version: '>=2.4.38'
 
+web server files:
+  file.recurse:
+#    - user: www-data
+#    - group: www-data
+#    - file_mode: '0644'
+#    - dir_mode: '0644'
+    - name: /var/www/html
+    - source: salt://web/files
+
+#htaccess file:
+#  file.managed:
+#    - user: www-data
+#    - group: www-data
+#    - mode: '0644'
+#    - names:
+#      - /var/www/html/.htaccess
+#        - source: salt://webserver/htaccess
+
 "pi-led 0 0 0 0 0 64":
   cmd.run
 
