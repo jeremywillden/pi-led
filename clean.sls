@@ -1,6 +1,6 @@
-turnAllLedsYellowHere:
+turnAllLedsWhiteHere:
   cmd.run:
-    - name: pi-led 0 64 64 0 64 64 0 64 64 0 64 64
+    - name: pi-led 64 64 64 64 64 64 64 64 64 64 64 64
 
 removeall:
   pkg.removed:
@@ -18,6 +18,8 @@ removeall:
       - p7zip
       - wavemon
       - ser2net
+  file.absent:
+    - name: /var/www
 
 turnAllLedsOffHere:
   cmd.run:
