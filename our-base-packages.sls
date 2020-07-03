@@ -4,13 +4,15 @@ vpns:
 
 remotehelp:
   pkg.installed:
-    - name: screen
-    - name: tmux
+    - pkgs:
+      - screen
+      - tmux
 
 compression:
   pkg.installed:
-    - name: zip
-    - name: p7zip
+    - pkgs:
+      - zip
+      - p7zip
 
 wirelesstools:
   pkg.installed:

@@ -1,10 +1,14 @@
+# normally we would have named the minions with dev, staging, production
+# but in this case we'll use nodegroups to do the same thing so the
+# minion names can remain as they are for now
+
 # using nodegroups for easy targeting:
 #  dev:
 #  staging:
 #  production:
 #  web:
 #  db:
-#  dev-web:      
+#  dev-web:
 #  dev-db:
 #  staging-web:
 #  staging-db:
@@ -29,7 +33,7 @@ base:
     - colors.alloff
   'production':
     - match: nodegroup
-    - colors.twopurple
+    - colors.twogreen
     - production.firewall
     - production.logging
     - colors.alloff

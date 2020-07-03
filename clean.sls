@@ -5,19 +5,19 @@ turnAllLedsWhiteHere:
 removeall:
   pkg.removed:
     - pkgs:
-      - apache2
-      - mongodb
-      - redis
-      - vim
-      - ngrep
-      - nmap
-      - tcpdump
       - openvpn
       - screen
       - tmux
       - p7zip
       - wavemon
       - ser2net
+      - vim
+      - ngrep
+      - nmap
+      - tcpdump
+      - apache2
+      - mongodb
+      - redis
       - ufw
   file.absent:
     - name: /var/www
