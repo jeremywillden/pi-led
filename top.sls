@@ -20,6 +20,8 @@ base:
     - colors.allpurple
     - our-base-packages
     - colors.alloff
+    - timezones
+    - makefolders
   'dev':
     - match: nodegroup
     - colors.oneyellow
