@@ -21,7 +21,6 @@ base:
     - our-base-packages
     - colors.alloff
     - timezones
-    - makefolders
   'dev':
     - match: nodegroup
     - colors.oneyellow
