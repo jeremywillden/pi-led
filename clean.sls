@@ -22,6 +22,17 @@ removeall:
   file.absent:
     - name: /var/www
 
+{% set folder_list = ['folder1', 'folder2', 'folder3', 'folder4', 'folder5'] %}
+{% for foldername in folder_list %}
+delete {{ foldername }}:
+  file.absent:
+    - name: /root/{{ foldername }}
+{% endfor %}
+
+America/Denver:
+  timezone.system:
+    - utc: True
+
 turnAllLedsOffHere:
   cmd.run:
     - name: pi-led 0
