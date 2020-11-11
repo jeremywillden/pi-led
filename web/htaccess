@@ -1,5 +1,0 @@
-order deny,allow
-
-deny from all
-
-allow from 10.0.0
