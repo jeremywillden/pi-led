@@ -2,6 +2,9 @@
 {{ oneuser.name }}:
   user.present:
     - password: {{ oneuser.pass }}
+{% if 'Windows' != grains['os_family'] %}
+    - hash_password: True
+{% endif %}
     - home: /home/{{ oneuser.name }}
 
 user photo for {{ oneuser.name }}:
