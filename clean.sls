@@ -29,6 +29,15 @@ delete {{ foldername }}:
     - name: /root/{{ foldername }}
 {% endfor %}
 
+{% for oneuser in pillar['user-list'] %}
+{{ oneuser.name }}:
+  user.absent
+
+user photo for {{ oneuser.name }}:
+  file.absent:
+    - name: /home/{{ oneuser.name }}
+{% endfor %}
+
 America/Denver:
   timezone.system:
     - utc: True
